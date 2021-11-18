@@ -1,12 +1,13 @@
 page 50051 PortfolioList
 {
-    
+
     ApplicationArea = All;
-    Caption = 'PortfolioList';
+    Caption = 'Portfolio';
+    CardPageID = "Portfolio";
     PageType = List;
     SourceTable = Portfolio;
     UsageCategory = Lists;
-    
+
     layout
     {
         area(content)
