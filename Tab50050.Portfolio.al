@@ -1,23 +1,23 @@
 table 50050 Portfolio
 {
-    Caption = 'Portfolio';
+    CaptionML = DEU='Portfolio', ENU='Portfolio';
     DataClassification = CustomerContent;
     
     fields
     {
         field(1; "Code"; Code[20])
         {
-            Caption = 'Code';
+            CaptionML = DEU = 'Code', ENU = 'Code';
             DataClassification = CustomerContent;
         }
         field(2; Titel; Text[255])
         {
-            Caption = 'Titel';
+            CaptionML = DEU = 'Titel', ENU = 'Title';
             DataClassification = CustomerContent;
         }
         field(3; Beschreibung; Text[2048])
         {
-            Caption = 'Beschreibung';
+            CaptionML = DEU = 'Beschreibung', ENU = 'Description';
             DataClassification = CustomerContent;
         }
     }

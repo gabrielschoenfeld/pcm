@@ -2,7 +2,7 @@ page 50051 PortfolioList
 {
 
     ApplicationArea = All;
-    Caption = 'Portfolio';
+    CaptionML = DEU='Portfolio', ENU='Portfolio';
     CardPageID = "Portfolio";
     PageType = List;
     SourceTable = Portfolio;
@@ -16,18 +16,23 @@ page 50051 PortfolioList
             {
                 field("Code"; Rec."Code")
                 {
-                    ToolTip = 'Specifies the value of the Code field.';
+                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Code eines Portfolios.';
                     ApplicationArea = All;
+                    ShowMandatory = true;
+                    CaptionML = ENU = 'Code', DEU = 'Code';
                 }
                 field(Titel; Rec.Titel)
                 {
-                    ToolTip = 'Specifies the value of the Titel field.';
+                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Titel eines Portfolios.';
                     ApplicationArea = All;
+                    ShowMandatory = true;
+                    CaptionML = ENU = 'Title', DEU = 'Titel';
                 }
                 field(Beschreibung; Rec.Beschreibung)
                 {
-                    ToolTip = 'Specifies the value of the Beschreibung field.';
+                    ToolTip = 'Dieser Wert beschreibt ein Portfolio näher.';
                     ApplicationArea = All;
+                    CaptionML = ENU = 'Description', DEU = 'Beschreibung';
                 }
             }
         }
