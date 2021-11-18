@@ -1,10 +1,10 @@
 {
   "id": "c0f5667b-31e6-4808-a95c-2f92c98e9fb0",
-  "name": "test",
-  "publisher": "Default publisher",
+  "name": "Project Cycle Management",
+  "publisher": "Gabriel-Johannes Schönfeld",
   "version": "1.0.0.0",
   "brief": "",
-  "description": "",
+  "description": "Within the scope of a bachelor thesis, a project cycle management system is prototypically developed for an international aid and development organization.",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
@@ -16,8 +16,8 @@
   "application": "19.0.0.0",
   "idRanges": [
     {
-      "from": 50100,
-      "to": 50149
+      "from": 50050,
+      "to": 50100
     }
   ],
   "resourceExposurePolicy": {
