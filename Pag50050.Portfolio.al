@@ -43,7 +43,7 @@ page 50050 Portfolio
             part("Attached Documents"; "Document Attachment Factbox")
             {
                 ApplicationArea = All;
-                Caption = 'Attachments';
+                CaptionML = ENU = 'Attachments', DEU = 'Begleitdokument';
                 SubPageLink = "Table ID" = CONST(50050),
                               "No." = FIELD("Code");
             }

@@ -28,12 +28,6 @@ page 50051 "Portfolio List"
                     ShowMandatory = true;
                     CaptionML = ENU = 'Title', DEU = 'Titel';
                 }
-                field(Beschreibung; Rec.Description)
-                {
-                    ToolTip = 'Dieser Wert beschreibt ein Portfolio näher.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'Description', DEU = 'Beschreibung';
-                }
             }
         }
     }
