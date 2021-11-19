@@ -16,9 +16,10 @@ table 50050 Portfolio
             trigger OnValidate()
             begin
                 if "Code" <> xRec."Code" then begin
-                    PCMSetup.Get();
+                    if PCMSetup.Get() then begin
                     NoSeriesMgt.TestManual(PCMSetup."Portfolio Codes");
                     "No. Series" := '';
+                    end;
                 end;
             end;
         }
@@ -86,11 +87,11 @@ table 50050 Portfolio
         if IsHandled then
             exit;
 
-        PCMSetup.Get();    
-        if "Code" = '' then begin
-            PCMSetup.TestField("Portfolio Codes");
-            NoSeriesMgt.InitSeries(PCMSetup."Portfolio Codes", xRec."No. Series", 0D, "Code", "No. Series");
-        end;
+        if PCMSetup.Get() then
+            if "Code" = '' then begin
+                PCMSetup.TestField("Portfolio Codes");
+                NoSeriesMgt.InitSeries(PCMSetup."Portfolio Codes", xRec."No. Series", 0D, "Code", "No. Series");
+            end;
 
         DimMgt.UpdateDefaultDim(
           DATABASE::Portfolio, "Code",
