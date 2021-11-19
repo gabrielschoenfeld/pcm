@@ -4,9 +4,9 @@ pageextension 50050 "Document Attachement Details" extends "Document Attachment 
     {
         addafter("Name")
         {
-            field("Type"; Rec.Type) 
+            field("Document Attachement Label"; Rec."Document Attachement Label") 
             {
-                ApplicationArea = All;
+                ApplicationArea = Basic, Suite;;
                 CaptionML = DEU = 'Begleitdokumenttyp', ENU = 'Attachement type';
                 ToolTipML = DEU = 'Gibt den Dokumenttyp an.', ENU = 'Specifies the attachement type.';
             }
