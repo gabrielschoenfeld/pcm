@@ -2,9 +2,9 @@ tableextension 50050 "Document Attachement" extends "Document Attachment"
 {
     fields
     {
-        field(50050; "Document label"; Code[20]) 
+        field(50050; "Document Attachement Label"; Code[20]) 
         {
-            CaptionML = DEU = 'Begleitdokumenttyp', ENU = 'Document label';
+            CaptionML = DEU = 'Begleitdokumenttyp', ENU = 'Document Attachement Label';
             TableRelation = "Document Attachement Label";
             DataClassification = CustomerContent;
             NotBlank = true;
