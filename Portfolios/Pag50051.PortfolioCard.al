@@ -1,4 +1,4 @@
-page 50050 Portfolio
+page 50051 Portfolio
 {
     AdditionalSearchTerms = 'project pcm portfolio program projekt programm';
     CaptionML = DEU='Portfolio', ENU='Portfolio';
@@ -11,7 +11,7 @@ page 50050 Portfolio
         {
             group(General)
             {
-                CaptionML = ENU = 'General', DEU = 'Allgemein';
+                CaptionML = ENU = 'Portfolio', DEU = 'Portfolio';
                 field("Code"; Rec."Code")
                 {
                     ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Code eines Portfolios.';
@@ -38,13 +38,21 @@ page 50050 Portfolio
                     CaptionML = ENU = 'Description', DEU = 'Beschreibung';
                 }
             }
+            group(Programs)
+            {
+                CaptionML = ENU = 'Programs', DEU = 'Programme';
+                part("Program ListPart"; "Program ListPart")
+                {
+                    SubPageLink = "Portfolio" = FIELD("Code");
+                }
+            }
         }
         area(FactBoxes) {
             part("Attached Documents"; "Document Attachment Factbox")
             {
                 ApplicationArea = All;
                 CaptionML = ENU = 'Attachments', DEU = 'Begleitdokument';
-                SubPageLink = "Table ID" = CONST(50050),
+                SubPageLink = "Table ID" = CONST(50051),
                               "No." = FIELD("Code");
             }
             systempart(Control1900383207; Links)

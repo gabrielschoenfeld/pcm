@@ -1,8 +1,8 @@
-page 50051 "Portfolio List"
+page 50050 "Portfolio List"
 {
     AdditionalSearchTerms = 'project pcm portfolio program projekt programm';
     ApplicationArea = All;
-    CaptionML = DEU='Portfolio', ENU='Portfolio';
+    CaptionML = DEU='Portfolios', ENU='Portfolios';
     CardPageID = "Portfolio";
     PageType = List;
     SourceTable = Portfolio;

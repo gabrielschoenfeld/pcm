@@ -1,15 +1,17 @@
-page 50053 "Document Attachement Label"
+page 50054 "Document Attachement LabelList"
 {
-    AdditionalSearchTerms = 'project pcm portfolio program projekt programm document dokument type typ label';
+    AdditionalSearchTerms = 'attachement anhang beleg document dokument type typ label';
     CaptionML = DEU='Begleitdokumenttyp', ENU='Document Attachement Label';
-    PageType = Card;
+    PageType = List;
     SourceTable = "Document Attachement Label";
+    CardPageID = "Document Attachement Label";
+    UsageCategory = Lists;
     
     layout
     {
         area(content)
         {
-            group(Document)
+            repeater(Document)
             {
                 CaptionML = DEU='Dokumenttyp', ENU='Document Label';
                 field("Code"; Rec."Code")
