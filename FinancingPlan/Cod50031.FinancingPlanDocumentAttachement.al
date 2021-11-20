@@ -1,16 +1,16 @@
-codeunit 50057 "Contract Document Attachement"
+codeunit 50031 "Financing Plan Doc Attachement"
 {
     [EventSubscriber(ObjectType::Page, Page::"Document Attachment Factbox", 'OnBeforeDrillDown', '', false, false)]
     local procedure OnBeforeDrillDown(DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef);
     var
-        Contract: Record "Contract";
+        "Financing Plan": Record "Financing Plan";
     begin
         case DocumentAttachment."Table ID" of
-            DATABASE::"Contract":
+            DATABASE::"Financing Plan":
                 begin
-                    RecRef.Open(DATABASE::"Contract");
-                    if Contract.Get(DocumentAttachment."No.") then
-                        RecRef.GetTable(Contract);
+                    RecRef.Open(DATABASE::"Financing Plan");
+                    if "Financing Plan".Get(DocumentAttachment."No.") then
+                        RecRef.GetTable("Financing Plan");
                 end;
         end;
     end;
@@ -22,7 +22,7 @@ codeunit 50057 "Contract Document Attachement"
         RecNo: Code[20];
     begin
         case RecRef.Number of
-            DATABASE::"Contract":
+            DATABASE::"Financing Plan":
                 begin
                     FieldRef := RecRef.Field(1);
                     RecNo := FieldRef.Value;

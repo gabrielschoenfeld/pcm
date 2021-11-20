@@ -1,4 +1,4 @@
-table 50052 "Project Cycle Management Setup"
+table 50000 "Project Cycle Management Setup"
 {
     CaptionML = ENU = 'Project Cycle Management Setup';
     DataClassification = CustomerContent;

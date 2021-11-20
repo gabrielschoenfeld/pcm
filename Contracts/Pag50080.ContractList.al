@@ -1,4 +1,4 @@
-page 50056 "Contract List"
+page 50080 "Contract List"
 {
     AdditionalSearchTerms = 'project pcm portfolio program projekt programm';
     ApplicationArea = All;

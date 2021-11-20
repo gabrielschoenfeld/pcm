@@ -43,7 +43,9 @@ page 50051 Portfolio
                 CaptionML = ENU = 'Programs', DEU = 'Programme';
                 part("Program ListPart"; "Program ListPart")
                 {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
                     SubPageLink = "Portfolio" = FIELD("Code");
+                    ApplicationArea = All;
                 }
             }
         }

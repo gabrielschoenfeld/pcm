@@ -1,4 +1,4 @@
-pageextension 50050 "Document Attachement Details" extends "Document Attachment Details"
+pageextension 50070 "Document Attachement Details" extends "Document Attachment Details"
 {
     layout
     {

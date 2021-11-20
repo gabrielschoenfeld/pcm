@@ -1,4 +1,4 @@
-page 50052 "Project Cycle Management Setup"
+page 50000 "Project Cycle Management Setup"
 {
     AdditionalSearchTerms = 'project pcm setup';
     ApplicationArea = Jobs;

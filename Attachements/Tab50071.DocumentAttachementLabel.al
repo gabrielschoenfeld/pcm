@@ -1,4 +1,4 @@
-table 50053 "Document Attachement Label"
+table 50071 "Document Attachement Label"
 {
     CaptionML = DEU = 'Begleitdokumenttyp', ENU = 'Attachement Type';
     DataClassification = CustomerContent;

@@ -1,74 +1,69 @@
-page 50059 Program
+page 50031 "Financing Plan"
 {
-    AdditionalSearchTerms = 'project pcm Program program projekt programm';
-    CaptionML = DEU='Programm', ENU='Program';
+    AdditionalSearchTerms = 'project pcm portfolio program projekt programm';
+    CaptionML = DEU='Vertrag', ENU='Financing Plan';
     PageType = Card;
-    SourceTable = Program;
-    
+    SourceTable = "Financing Plan";
+
     layout
     {
         area(content)
         {
             group(General)
             {
-                CaptionML = ENU = 'General', DEU = 'Allgemein';
+                CaptionML = DEU = 'Allgemein', ENU = 'General';
                 field("Code"; Rec."Code")
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Code eines Programs.';
+                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Code eines Vertrags.';
                     ApplicationArea = All;
                     ShowMandatory = true;
                     CaptionML = ENU = 'Code', DEU = 'Code';
-
-                    trigger OnAssistEdit()
-                    begin
-                        Rec.AssistEdit;
-                    end;
                 }
-                field(Titel; Rec.Title)
+                field(Project; Rec.Project)
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Titel eines Programs.';
+                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Titel eines Vertrags.';
                     ApplicationArea = All;
                     ShowMandatory = true;
                     CaptionML = ENU = 'Title', DEU = 'Titel';
                 }
-                field(Beschreibung; Rec.Description)
+                field(Description; Rec.Description)
                 {
-                    ToolTip = 'Dieser Wert beschreibt ein Program näher.';
+                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt die Beschreibung eines Vertrags.';
                     ApplicationArea = All;
                     CaptionML = ENU = 'Description', DEU = 'Beschreibung';
                 }
                 field(Status; Rec.Status)
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Status eines Programms.';
+                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Status eines Vertrags.';
                     ApplicationArea = All;
                     ShowMandatory = true;
                     CaptionML = ENU = 'Status', DEU = 'Status';
                 }
             }
+            group(Partner)
+            {
+                CaptionML = DEU = 'Partner', ENU = 'Partner';
+                field(Customer; Rec.Customer)
+                {
+                    ToolTip = 'Dieser Wert beschreibt den Geldgeber.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Donor', DEU = 'Geldgeber';
+                }
+                field(Vendor; Rec.Vendor)
+                {
+                    ToolTip = 'Dieser Wert beschreibt den Implementierungspartner.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Implementation partner', DEU = 'Implementierungspartner';
+                }
+            }
             group(Validity)
             {
                 CaptionML = DEU = 'Gültigkeit', ENU = 'Validity';
-                field("Start date"; Rec."Start date")
+                field("Date"; Rec."Date")
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Programmbeginn.';
+                    ToolTip = 'Dieser beschreibt das Datum der Zahlung.';
                     ApplicationArea = All;
-                    CaptionML = ENU = 'Start date', DEU = 'Programmbeginn';
-                }
-                field("End date"; Rec."End date")
-                {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt das Programmende.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'End date', DEU = 'Programmende';
-                }
-            }
-            group(Relation)
-            {
-                CaptionML = DEU = 'Zuordnung', ENU = 'Portfolio';
-                field("Portfolio"; Rec."Portfolio")
-                {
-                    ToolTip = 'Dieser Wert bezeichnet das Portfolio zu dem das Programm gehört.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'Portfolio', DEU = 'Portfolio';
+                    CaptionML = ENU = 'Date', DEU = 'Datum';
                 }
             }
         }
@@ -77,7 +72,7 @@ page 50059 Program
             {
                 ApplicationArea = All;
                 CaptionML = ENU = 'Attachments', DEU = 'Begleitdokument';
-                SubPageLink = "Table ID" = CONST(50059),
+                SubPageLink = "Table ID" = CONST(50057),
                               "No." = FIELD("Code");
             }
             systempart(Control1900383207; Links)

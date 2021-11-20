@@ -1,9 +1,9 @@
-page 50057 "Contract"
+page 50021 "Payment Plan"
 {
     AdditionalSearchTerms = 'project pcm portfolio program projekt programm';
-    CaptionML = DEU='Vertrag', ENU='Contract';
+    CaptionML = DEU='Vertrag', ENU='Payment Plan';
     PageType = Card;
-    SourceTable = Contract;
+    SourceTable = "Payment Plan";
 
     layout
     {
@@ -19,7 +19,7 @@ page 50057 "Contract"
                     ShowMandatory = true;
                     CaptionML = ENU = 'Code', DEU = 'Code';
                 }
-                field(Titel; Rec.Title)
+                field(Project; Rec.Project)
                 {
                     ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Titel eines Vertrags.';
                     ApplicationArea = All;
@@ -45,25 +45,25 @@ page 50057 "Contract"
                 CaptionML = DEU = 'Partner', ENU = 'Partner';
                 field(Customer; Rec.Customer)
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Vertragspartner.';
+                    ToolTip = 'Dieser Wert beschreibt den Geldgeber.';
                     ApplicationArea = All;
-                    CaptionML = ENU = 'Contractual partner', DEU = 'Vertragspartner';
+                    CaptionML = ENU = 'Donor', DEU = 'Geldgeber';
+                }
+                field(Vendor; Rec.Vendor)
+                {
+                    ToolTip = 'Dieser Wert beschreibt den Implementierungspartner.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Implementation partner', DEU = 'Implementierungspartner';
                 }
             }
             group(Validity)
             {
                 CaptionML = DEU = 'Gültigkeit', ENU = 'Validity';
-                field("Start date"; Rec."Start date")
+                field("Date"; Rec."Date")
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Vertragsbeginn.';
+                    ToolTip = 'Dieser beschreibt das Datum der Zahlung.';
                     ApplicationArea = All;
-                    CaptionML = ENU = 'Start date', DEU = 'Vertragsbeginn';
-                }
-                field("End date"; Rec."End date")
-                {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt das Vertragsende.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'End date', DEU = 'Vertragsende';
+                    CaptionML = ENU = 'Date', DEU = 'Datum';
                 }
             }
         }

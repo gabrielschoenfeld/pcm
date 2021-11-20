@@ -1,4 +1,4 @@
-codeunit 50059 "Program Document Attachement"
+codeunit 50061 "Program Document Attachement"
 {
     [EventSubscriber(ObjectType::Page, Page::"Document Attachment Factbox", 'OnBeforeDrillDown', '', false, false)]
     local procedure OnBeforeDrillDown(DocumentAttachment: Record "Document Attachment"; var RecRef: RecordRef);

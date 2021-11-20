@@ -1,4 +1,4 @@
-page 50060 "Program ListPart"
+page 50062 "Program ListPart"
 {
     PageType = ListPart;
     SourceTable = "Program";

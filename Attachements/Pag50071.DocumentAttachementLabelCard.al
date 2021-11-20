@@ -1,4 +1,4 @@
-page 50053 "Document Attachement Label"
+page 50071 "Document Attachement Label"
 {
     AdditionalSearchTerms = 'attachement anhang beleg document dokument type typ label';
     CaptionML = DEU='Begleitdokumenttyp', ENU='Document Attachement Label';

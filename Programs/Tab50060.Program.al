@@ -1,4 +1,4 @@
-table 50058 Program
+table 50060 Program
 {
     CaptionML = DEU='Programm', ENU='Program';
     DataClassification = CustomerContent;

@@ -1,9 +1,7 @@
-table 50056 Contract
+table 50030 "Financing Plan"
 {
-    CaptionML = DEU='Vertrag', ENU='Contract';
+    CaptionML = DEU='Vertrag', ENU='Financing Plan';
     DataClassification = CustomerContent;
-    DrillDownPageID = "Contract List";
-    LookupPageID = "Contract List";
     
     fields
     {
@@ -12,10 +10,11 @@ table 50056 Contract
             CaptionML = ENU = 'Code', DEU = 'Code';
             DataClassification = CustomerContent;
         }
-        field(2; Title; Text[255])
+        field(2; Project; Code[20])
         {
-            CaptionML = ENU = 'Title', DEU = 'Titel';
+            CaptionML = ENU = 'Project', DEU = 'Projekt';
             DataClassification = CustomerContent;
+//            TableRelation = Project;
         }
         field(3; Description; Text[2048])
         {
@@ -55,33 +54,17 @@ table 50056 Contract
             CaptionML = ENU = 'Status', DEU = 'Status';
             DataClassification = CustomerContent;
             OptionMembers = "Planning","Active","Inactive","Completed";
-            OptionCaptionML = ENU = 'Planing,Active,Inactive,Completed', DEU = 'Planung,Aktiv,Inaktiv,Abgeschlossen';
+            OptionCaptionML = ENU = 'Open,Completed', DEU = 'Offen,Abgeschlossen';
         }
-        field(7; "Start date"; Date)
+        field(7; "Date"; Date)
         {
-            CaptionML = ENU = 'Start date', DEU = 'Vertragsbeginn';
+            CaptionML = ENU = 'Date', DEU = 'Datum';
             DataClassification = CustomerContent;
-
-            trigger OnValidate()
-            begin
-                if (Rec."Start date" <> 0D) and (Rec."End date" <> 0D) then begin
-                    if (Rec."Start date" > Rec."End date") then
-                        Error('Das Vertragsende darf nicht vor dem Vertragsbeginn liegen.')
-                end;
-            end;
         }
-        field(8; "End date"; Date)
+        field(8; "Amount"; Decimal)
         {
-            CaptionML = ENU = 'End date', DEU = 'Vertragsende';
+            CaptionML = ENU = 'Amount', DEU = 'Betrag';
             DataClassification = CustomerContent;
-
-            trigger OnValidate()
-            begin
-                if (Rec."Start date" <> 0D) and (Rec."End date" <> 0D) then begin
-                    if (Rec."Start date" > Rec."End date") then
-                        Error('Das Vertragsende darf nicht vor dem Vertragsbeginn liegen.')
-                end;
-            end;
         }
     }
     keys
@@ -90,5 +73,6 @@ table 50056 Contract
         {
             Clustered = true;
         }
+        key(FK; "Project") { }
     }
 }
