@@ -155,22 +155,22 @@ table 50090 PCMLocation
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterValidateShortcutDimCode(var Location: Record Location; var xLocation: Record Location; FieldNumber: Integer; var ShortcutDimCode: Code[20])
+    local procedure OnAfterValidateShortcutDimCode(var PCMLocation: Record PCMLocation; var xLocation: Record PCMLocation; FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeAssistEdit(var Location: Record Location; xLocation: Record Location; var Result: Boolean; var IsHandled: Boolean)
+    local procedure OnBeforeAssistEdit(var PCMLocation: Record PCMLocation; xLocation: Record PCMLocation; var Result: Boolean; var IsHandled: Boolean)
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeOnInsert(var Location: Record Location; var xLocation: Record Location; var IsHandled: Boolean)
+    local procedure OnBeforeOnInsert(var PCMLocation: Record PCMLocation; var xLocation: Record PCMLocation; var IsHandled: Boolean)
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeValidateShortcutDimCode(var Location: Record Location; var xLocation: Record Location; FieldNumber: Integer; var ShortcutDimCode: Code[20])
+    local procedure OnBeforeValidateShortcutDimCode(var PCMLocation: Record PCMLocation; var xLocation: Record PCMLocation; FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
     end;
 }
