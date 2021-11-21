@@ -77,6 +77,36 @@ page 50011 Project
                     CaptionML = ENU = 'Program', DEU = 'Programm';
                 }
             }
+            group(FinancingPlan)
+            {
+                CaptionML = ENU = 'Financing Plan', DEU = 'Finanzierungsplan';
+                part("Financing Plan ListPart"; "Financing Plan ListPart")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Project" = FIELD("Code");
+                    ApplicationArea = All;
+                }
+            }
+            group(PaymentPlan)
+            {
+                CaptionML = ENU = 'Payment Plan', DEU = 'Zahlungsplan';
+                part("Payment Plan ListPart"; "Payment Plan ListPart")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Project" = FIELD("Code");
+                    ApplicationArea = All;
+                }
+            }
+            group(Documentation)
+            {
+                CaptionML = ENU = 'Documentation', DEU = 'Dokumentation';
+                part("Documentation ListPart"; "Documentation ListPart")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Project" = FIELD("Code");
+                    ApplicationArea = All;
+                }
+            }
         }
         area(FactBoxes) {
             part("Attached Documents"; "Document Attachment Factbox")

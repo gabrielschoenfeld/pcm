@@ -1,6 +1,6 @@
 table 50030 "Financing Plan"
 {
-    CaptionML = DEU='Vertrag', ENU='Financing Plan';
+    CaptionML = DEU='Finanzierungsplan', ENU='Financing Plan';
     DataClassification = CustomerContent;
     
     fields
@@ -14,7 +14,7 @@ table 50030 "Financing Plan"
         {
             CaptionML = ENU = 'Project', DEU = 'Projekt';
             DataClassification = CustomerContent;
-//            TableRelation = Project;
+            TableRelation = Project;
         }
         field(3; Description; Text[2048])
         {
