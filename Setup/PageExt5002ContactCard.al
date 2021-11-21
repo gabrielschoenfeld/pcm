@@ -2,6 +2,14 @@ pageextension 50002 "Contact Card" extends "Contact Card"
 {
     layout
     {
+        addafter("Name")
+        {
+            field("Description"; Rec."Description") 
+            {
+                ApplicationArea = Basic, Suite;
+                ToolTipML = DEU = 'Gib eine Beschreibung an.', ENU = 'Specifies a description.';
+            }
+        }
         addafter("Salesperson Code")
         {
             field("Responsible Resource Group"; Rec."Resource Group") 
@@ -18,7 +26,7 @@ pageextension 50002 "Contact Card" extends "Contact Card"
                 action(Dimensions)
                 {
                     ApplicationArea = Dimensions;
-                    CaptionML = ENU = 'Dimensions', DEU = 'Vorgabedimension';
+                    CaptionML = ENU = 'Dimensions', DEU = 'Vorgabedimensionen';
                     Image = Dimensions;
                     Promoted = true;
                     PromotedCategory = Category4;
