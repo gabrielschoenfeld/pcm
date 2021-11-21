@@ -4,7 +4,7 @@ page 50092 "PCMLocation Mapping List"
     ApplicationArea = All;
     CaptionML = DEU='Ort Mapping', ENU='Location Mapping';
     CardPageID = "PCMLocation";
-    PageType = List;
+    PageType = ListPart;
     SourceTable = "PCMLocationMapping";
     UsageCategory = Lists;
 
@@ -14,16 +14,16 @@ page 50092 "PCMLocation Mapping List"
         {
             repeater(General)
             {
-                field(Project; Rec."Project Code")
+                field(Title; Rec.Title)
                 {
                     ApplicationArea = All;
-                    CaptionML = ENU = 'Project Code', DEU = 'Projektcode';
+                    CaptionML = ENU = 'Title', DEU = 'Titel';
                     Editable = false;
                 }
-                field(PCMLocation; Rec."Location Code")
+                field(Country; Rec.Country)
                 {
                     ApplicationArea = All;
-                    CaptionML = ENU = 'Location Code', DEU = 'Ortscode';
+                    CaptionML = ENU = 'Country', DEU = 'Land';
                     Editable = false;
                 }
                 field(Latitude; Rec.Latitude)
