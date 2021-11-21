@@ -11,19 +11,25 @@ table 50000 "Project Cycle Management Setup"
         }
         field(2; "Portfolio Codes"; Code[20])
         {
-            Caption = 'Portfolio Codes';
+            CaptionML = ENU = 'Portfolio Codes', DEU = 'Portfolio Codes';
             DataClassification = CustomerContent;
             TableRelation = "No. Series";
         }
         field(3; "Program Codes"; Code[20])
         {
-            Caption = 'Program Codes';
+            CaptionML = ENU = 'Program Codes', DEU = 'Programm Codes';
             DataClassification = CustomerContent;
             TableRelation = "No. Series";
         }
         field(4; "Project Codes"; Code[20])
         {
-            Caption = 'Project Codes';
+            CaptionML = ENU = 'Project Codes', DEU = 'Projekt Codes';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(5; "Location Codes"; Code[20])
+        {
+            CaptionML = ENU = 'Location Codes', DEU = 'Ort Codes';
             DataClassification = CustomerContent;
             TableRelation = "No. Series";
         }
