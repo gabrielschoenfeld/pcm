@@ -2,8 +2,8 @@ table 50090 PCMLocation
 {
     CaptionML = DEU='Ort', ENU='Location';
     DataClassification = CustomerContent;
-    DrillDownPageID = "Location List";
-    LookupPageID = "Location List";
+    DrillDownPageID = "PCMLocation List";
+    LookupPageID = "PCMLocation List";
     
     fields
     {

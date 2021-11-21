@@ -1,11 +1,11 @@
-page 50090 "PCMLocation List"
+page 50092 "PCMLocation Mapping List"
 {
     AdditionalSearchTerms = 'project pcm location program projekt programm';
     ApplicationArea = All;
-    CaptionML = DEU='Orte', ENU='Locations';
+    CaptionML = DEU='Ort Mapping', ENU='Location Mapping';
     CardPageID = "PCMLocation";
     PageType = List;
-    SourceTable = PCMLocation;
+    SourceTable = "PCMLocationMapping";
     UsageCategory = Lists;
 
     layout
@@ -14,30 +14,29 @@ page 50090 "PCMLocation List"
         {
             repeater(General)
             {
-                field(Title; Rec.Title)
+                field(Project; Rec."Project Code")
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Titel eines Locations.';
                     ApplicationArea = All;
-                    ShowMandatory = true;
-                    CaptionML = ENU = 'Title', DEU = 'Titel';
+                    CaptionML = ENU = 'Project Code', DEU = 'Projektcode';
+                    Editable = false;
                 }
-                field(Country; Rec.Country)
+                field(PCMLocation; Rec."Location Code")
                 {
-                    ToolTip = 'Dieser Wert gibt das Land an, in dem der Ort liegt.';
                     ApplicationArea = All;
-                    CaptionML = ENU = 'Country', DEU = 'Land';
+                    CaptionML = ENU = 'Location Code', DEU = 'Ortscode';
+                    Editable = false;
                 }
                 field(Latitude; Rec.Latitude)
                 {
-                    ToolTip = 'Dieser Wert gibt den Breitengrad an, an dem der Ort liegt.';
                     ApplicationArea = All;
                     CaptionML = ENU = 'Latitude', DEU = 'Breitengrad';
+                    Editable = false;
                 }
                 field(Longitude; Rec.Longitude)
                 {
-                    ToolTip = 'Dieser Wert gibt den Längengrad an, an dem der Ort liegt.';
                     ApplicationArea = All;
                     CaptionML = ENU = 'Longitude', DEU = 'Längengrad';
+                    Editable = false;
                 }
             }
         }
