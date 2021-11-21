@@ -63,12 +63,18 @@ page 50011 Project
             }
             group(Relation)
             {
-                CaptionML = DEU = 'Zuordnung', ENU = 'Portfolio';
+                CaptionML = DEU = 'Zuordnung', ENU = 'Relation';
                 field("Portfolio"; Rec."Portfolio")
                 {
                     ToolTip = 'Dieser Wert bezeichnet das Portfolio zu dem das Projekt gehört.';
                     ApplicationArea = All;
                     CaptionML = ENU = 'Portfolio', DEU = 'Portfolio';
+                }
+                field("Program"; Rec."Program")
+                {
+                    ToolTip = 'Dieser Wert bezeichnet das Programm zu dem das Projekt gehört.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Program', DEU = 'Programm';
                 }
             }
         }

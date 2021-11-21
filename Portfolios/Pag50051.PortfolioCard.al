@@ -48,6 +48,16 @@ page 50051 Portfolio
                     ApplicationArea = All;
                 }
             }
+            group(Projects)
+            {
+                CaptionML = ENU = 'Projects', DEU = 'Projekte';
+                part("Project ListPart"; "Project ListPart")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Portfolio" = FIELD("Code");
+                    ApplicationArea = All;
+                }
+            }
         }
         area(FactBoxes) {
             part("Attached Documents"; "Document Attachment Factbox")
