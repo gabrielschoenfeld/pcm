@@ -7,12 +7,17 @@ pageextension 50001 "Resource Group" extends "Resource Groups"
             field("Description"; Rec."Description") 
             {
                 ApplicationArea = Basic, Suite;
-                ToolTipML = DEU = 'Gib die Beschreibung für die Resourcengruppe an.', ENU = 'Specifies the description of resource group.';
+                ToolTipML = DEU = 'Gib die Beschreibung für die Ressourcengruppe an.', ENU = 'Specifies the description of resource group.';
             }
-            field("Responsible Resource Group"; Rec."Resource Group") 
+            field("Resource responsible"; Rec."Resource") 
             {
                 ApplicationArea = Basic, Suite;
-                ToolTipML = DEU = 'Gib die zuständige Abteilung für die Resourcengruppe an.', ENU = 'Specifies the responsible department of the resource group.';
+                ToolTipML = DEU = 'Gib die zuständige Ressource an.', ENU = 'Specifies the responsible resource.';
+            }
+            field("Resource Group responsible"; Rec."Resource Group") 
+            {
+                ApplicationArea = Basic, Suite;
+                ToolTipML = DEU = 'Gib die zuständige Resourcengruppe an.', ENU = 'Specifies the responsible resource group.';
             }
         }
     }
