@@ -85,6 +85,7 @@ page 50011 Project
                     CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
                     SubPageLink = "Project" = FIELD("Code");
                     ApplicationArea = All;
+                    UpdatePropagation = Both;
                 }
             }
             group(PaymentPlan)
@@ -95,6 +96,7 @@ page 50011 Project
                     CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
                     SubPageLink = "Project" = FIELD("Code");
                     ApplicationArea = All;
+                    UpdatePropagation = Both;
                 }
             }
             group(Documentation)
@@ -104,6 +106,17 @@ page 50011 Project
                 {
                     CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
                     SubPageLink = "Project" = FIELD("Code");
+                    ApplicationArea = All;
+                    UpdatePropagation = Both;
+                }
+            }
+            group(Location)
+            {
+                CaptionML = ENU = 'Location', DEU = 'Ort';
+                part("PCMLocation ListPart"; "PCMLocation Mapping List")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Project Code" = FIELD("Code");
                     ApplicationArea = All;
                     UpdatePropagation = Both;
                 }

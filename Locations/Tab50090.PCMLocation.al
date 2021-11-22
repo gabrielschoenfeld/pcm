@@ -72,10 +72,12 @@ table 50090 PCMLocation
         field(8; "Latitude"; Decimal)
         {
             CaptionML = ENU = 'Latitude', DEU = 'Breitengrad';
+            DecimalPlaces = 2 : 16;
         }
         field(9; "Longitude"; Decimal)
         {
             CaptionML = ENU = 'Longitude', DEU = 'Längengrad';
+            DecimalPlaces = 2 : 16;
         
         }
     }
