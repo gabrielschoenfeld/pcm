@@ -1,8 +1,8 @@
 table 50020 "Payment Plan"
 {
-    CaptionML = DEU='Zahlungsplan', ENU='Payment Plan';
+    CaptionML = DEU = 'Zahlungsplan', ENU = 'Payment Plan';
     DataClassification = CustomerContent;
-    
+
     fields
     {
         field(1; "Code"; Code[20])
@@ -32,7 +32,7 @@ table 50020 "Payment Plan"
                 CustomerRec: Record Customer;
             begin
                 if (Rec.Customer <> '') and CustomerRec.Get(Rec.Customer) and CustomerRec.ReadPermission then begin
-                        Rec.Vendor := '';
+                    Rec.Vendor := '';
                 end;
             end;
         }
@@ -47,7 +47,7 @@ table 50020 "Payment Plan"
                 VendorRec: Record Vendor;
             begin
                 if (Rec.Vendor <> '') and VendorRec.Get(Rec.Customer) and VendorRec.ReadPermission then begin
-                        Rec.Customer := '';
+                    Rec.Customer := '';
                 end;
             end;
         }
@@ -92,6 +92,19 @@ table 50020 "Payment Plan"
     begin
         if ("Code" = '') or ("Blocked" = true) then begin
             Error('Dieser Datensatz kann nicht gelöscht werden.');
+        end;
+    end;
+
+    trigger OnInsert()
+    begin
+        if "Code" = '' then begin
+            if PCMSetup.Get() then begin
+                PCMSetup.Get();
+                PCMSetup.TestField("Payment Plan Codes");
+                NoSeriesMgt.InitSeries(PCMSetup."Payment Plan Codes", xRec."No. Series", 0D, "Code", "No. Series");
+            end else begin
+                Message('Please complete the Project Cycle Management Setup first!');
+            end; 
         end;
     end;
 
