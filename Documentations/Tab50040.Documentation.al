@@ -12,6 +12,18 @@ table 50040 Documentation
             CaptionML = ENU = 'ID', DEU = 'ID';
             DataClassification = ToBeClassified;
             NotBlank = true;
+
+            trigger OnValidate()
+            var 
+                LastRec: Record Documentation;
+            begin
+                if (ID <> xRec.ID) then begin
+                    if LastRec.FindLast() then
+                        ID := LastRec.ID + 1
+                    else
+                        ID := 0;
+                end;
+            end;
         }
         field(2; Project; Code[20])
         {
@@ -19,6 +31,14 @@ table 50040 Documentation
             DataClassification = CustomerContent;
             NotBlank = true;
             TableRelation = "Project";
+
+            trigger OnValidate()
+            begin
+                if ("Project" <> xRec."Project") or ("Project" = '') then begin
+                    Error('Die Dokumentation konnte keinem Projekt zugeordnet werden.');
+                end;
+            end;
+            
         }
         field(3; Description; Text[2048])
         {

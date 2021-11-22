@@ -9,6 +9,10 @@ page 50042 "Documentation ListPart"
         {
             repeater(General)
             {
+                field("Project"; Rec."Project")
+                {
+                    Visible = false;
+                }
                 field("Date"; Rec."Date")
                 {
                     ApplicationArea = All;
@@ -30,4 +34,24 @@ page 50042 "Documentation ListPart"
         Rec.SetCurrentKey("Date", "ID");
         Rec.SetAscending("Date", false);
     end;
+
+    trigger OnAfterGetRecord()
+    begin
+        GetProject();
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        GetProject();
+    end;
+
+    local procedure GetProject()
+    begin
+        if not Pro.Get(Rec."Project") then
+            Pro.Init();
+        Rec.Project := Pro.Code;
+    end;
+
+    var
+        Pro: Record Project;
 }

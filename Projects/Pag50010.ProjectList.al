@@ -54,6 +54,13 @@ page 50010 "Project List"
                     ShowMandatory = true;
                     CaptionML = ENU = 'Portfolio', DEU = 'Portfolio';
                 }
+                field(Program; Rec.Program)
+                {
+                    ToolTip = 'Dieser Wert bezeichnet das Program zu dem das Projekt gehört.';
+                    ApplicationArea = All;
+                    ShowMandatory = true;
+                    CaptionML = ENU = 'Program', DEU = 'Programm';
+                }
             }
         }
     }
