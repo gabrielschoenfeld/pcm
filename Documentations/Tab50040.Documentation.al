@@ -84,9 +84,6 @@ table 50040 Documentation
         }
         key (SORT; "Date") {}
     }
-    var
-        ProjectHeader: Record Project;
-        DocumentationLine2: Record Documentation;
 
     trigger OnDelete()
     begin

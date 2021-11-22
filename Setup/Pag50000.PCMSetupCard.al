@@ -18,18 +18,33 @@ page 50000 "Project Cycle Management Setup"
                 Caption = 'Numbering';
                 field("Portfolio Codes"; Rec."Portfolio Codes")
                 {
-                    ApplicationArea = Jobs;
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the number series code to use when assigning codes to portfolios.';
                 }
                 field("Program Codes"; Rec."Program Codes")
                 {
-                    ApplicationArea = Jobs;
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the number series code to use when assigning codes to programs.';
                 }
                 field("Project Codes"; Rec."Project Codes")
                 {
-                    ApplicationArea = Jobs;
+                    ApplicationArea = All;
                     ToolTip = 'Specifies the number series code to use when assigning codes to projects.';
+                }
+                field("Location Codes"; Rec."Location Codes")
+                {
+                    CaptionML = ENU = 'Location Codes', DEU = 'Ort Codes';
+                    ApplicationArea = All;
+                }
+                field("Financing Plan Codes"; Rec."Financing Plan Codes")
+                {
+                    CaptionML = ENU = 'Financing Plan Codes', DEU = 'Finanzierungsplan Codes';
+                    ApplicationArea = All;
+                }
+                field("Payment Plan Codes"; Rec."Payment Plan Codes")
+                {
+                    CaptionML = ENU = 'Payment Plan Codes', DEU = 'Zahlungsplan Codes';
+                    ApplicationArea = All;
                 }
             }
         }

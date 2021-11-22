@@ -28,9 +28,15 @@ page 50030 "Financing Plan ListPart"
                     ShowMandatory = true;
                     CaptionML = ENU = 'Project', DEU = 'Projekt';
                 }
-                field("Date"; Rec."Date")
+                field("Start Date"; Rec."Start Date")
                 {
-                    ToolTip = 'Dieser beschreibt das Datum der Zahlung.';
+                    ToolTip = 'Dieser Wert beschreibt den Beginn des Verausgabungszeitraums.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Date', DEU = 'Datum';
+                }
+                field("End Date"; Rec."End Date")
+                {
+                    ToolTip = 'Dieser Wert beschreibt das Ende des Verausgabungszeitraums.';
                     ApplicationArea = All;
                     CaptionML = ENU = 'Date', DEU = 'Datum';
                 }

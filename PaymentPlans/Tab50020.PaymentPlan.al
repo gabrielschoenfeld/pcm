@@ -30,15 +30,8 @@ table 50020 "Payment Plan"
             trigger OnValidate()
             var
                 CustomerRec: Record Customer;
-                VendorRec: Record Vendor;
-                VendorCode: Text;
             begin
                 if (Rec.Customer <> '') and CustomerRec.Get(Rec.Customer) and CustomerRec.ReadPermission then begin
-                    // Solution for prototype - for productive use Record "Contact Business Relation"
-                    VendorCode := '8' + Format(CustomerRec."No.").Substring(2);
-                    if VendorRec.Get(VendorCode) and VendorRec.ReadPermission then
-                        Rec.Vendor := VendorCode
-                    else 
                         Rec.Vendor := '';
                 end;
             end;
@@ -48,6 +41,15 @@ table 50020 "Payment Plan"
             CaptionML = ENU = 'Vendor', DEU = 'Kreditor';
             DataClassification = CustomerContent;
             TableRelation = Vendor;
+
+            trigger OnValidate()
+            var
+                VendorRec: Record Vendor;
+            begin
+                if (Rec.Vendor <> '') and VendorRec.Get(Rec.Customer) and VendorRec.ReadPermission then begin
+                        Rec.Customer := '';
+                end;
+            end;
         }
         field(6; Status; Option)
         {
@@ -66,13 +68,57 @@ table 50020 "Payment Plan"
             CaptionML = ENU = 'Amount', DEU = 'Betrag';
             DataClassification = CustomerContent;
         }
+        field(9; "Blocked"; Boolean)
+        {
+            CaptionML = ENU = 'Blocked', DEU = 'Gesperrt';
+            DataClassification = CustomerContent;
+        }
+        field(10; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            Editable = false;
+            TableRelation = "No. Series";
+        }
     }
     keys
     {
-        key(PK; "Code")
+        key(PK; "Project", "Code")
         {
             Clustered = true;
         }
         key(FK; "Project") { }
     }
+    trigger OnDelete()
+    begin
+        if ("Code" = '') or ("Blocked" = true) then begin
+            Error('Dieser Datensatz kann nicht gelöscht werden.');
+        end;
+    end;
+
+    var
+        PCMSetup: Record "Project Cycle Management Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+
+    procedure InitNewRecord(var NewPaymentPlanLine: Record "Payment Plan"; ProjectCode: Code[20])
+    var
+        PaymentPlanLine: Record "Payment Plan";
+        NoSeries: Record "No. Series";
+    begin
+        NewPaymentPlanLine.Copy(Rec);
+        PaymentPlanLine.SetRange("Project", NewPaymentPlanLine."Project");
+        if PCMSetup.Get() then begin
+            PCMSetup.TestField("Project Codes");
+            if NoSeriesMgt.SelectSeries(PCMSetup."Payment Plan Codes", xRec."No. Series", "No. Series") then begin
+                NoSeriesMgt.SetSeries("Code");
+            end;
+            NewPaymentPlanLine."Project" := ProjectCode;
+        end else begin
+            Message('Please complete the Project Cycle Management Setup first!');
+        end;
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnDeleteOnAfterSetPaymentPlanLineFilters(var PaymentPlanLine: Record "Payment Plan")
+    begin
+    end;
 }

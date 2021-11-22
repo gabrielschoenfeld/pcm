@@ -59,11 +59,28 @@ page 50031 "Financing Plan"
             group(Validity)
             {
                 CaptionML = DEU = 'Gültigkeit', ENU = 'Validity';
-                field("Date"; Rec."Date")
+                field("Start Date"; Rec."Start Date")
                 {
-                    ToolTip = 'Dieser beschreibt das Datum der Zahlung.';
+                    ToolTip = 'Dieser Wert beschreibt den Beginn des Verausgabungszeitraums.';
                     ApplicationArea = All;
                     CaptionML = ENU = 'Date', DEU = 'Datum';
+                }
+                field("End Date"; Rec."End Date")
+                {
+                    ToolTip = 'Dieser Wert beschreibt das Ende des Verausgabungszeitraums.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Date', DEU = 'Datum';
+                }
+            }
+            group(Contract) 
+            {
+                CaptionML = DEU = 'Verträge', ENU = 'Contracts';
+                part("ContractFP ListPart"; "ContractFP Mapping List")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Financing Plan Code" = FIELD("Code");
+                    ApplicationArea = All;
+                    UpdatePropagation = Both;
                 }
             }
         }

@@ -14,20 +14,6 @@ page 50020 "Payment Plan ListPart"
         {
             repeater("Payment Plan")
             {
-                field("Code"; Rec."Code")
-                {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschreibt den Code einer Zahlungsplanzeile.';
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                    CaptionML = ENU = 'Code', DEU = 'Code';
-                }
-                field(Project; Rec.Project)
-                {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschreibt das zur Zahlungsplanzeile gehörige Projekt.';
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                    CaptionML = ENU = 'Project', DEU = 'Projekt';
-                }
                 field("Date"; Rec."Date")
                 {
                     ToolTip = 'Dieser beschreibt das Datum der Zahlung.';
@@ -51,6 +37,7 @@ page 50020 "Payment Plan ListPart"
                     ToolTip = 'Dieser Wert beschreibt den Status einer Zahlungsplanzeile.';
                     ApplicationArea = All;
                     ShowMandatory = true;
+                    Editable = false;
                     CaptionML = ENU = 'Status', DEU = 'Status';
                 }
                 field(Customer; Rec.Customer)

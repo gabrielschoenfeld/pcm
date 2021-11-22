@@ -143,9 +143,15 @@ page 50011 Project
     trigger OnOpenPage()
     var
         NewDocumentationLine: Record Documentation;
+        NewFinancingPlanLine: Record "Financing Plan";
+        NewPaymentPlanLine:  Record "Payment Plan";
     begin
         DocumentationLine.InitNewRecord(NewDocumentationLine, Rec.Code);
+        FinancingPlanLine.InitNewRecord(NewFinancingPlanLine, Rec.Code);
+        PaymentPlanLine.InitNewRecord(NewPaymentPlanLine, Rec.Code);
     end;
 
     var DocumentationLine: Record Documentation;
+    var FinancingPlanLine: Record "Financing Plan";
+    var PaymentPlanLine: Record "Payment Plan";
 }

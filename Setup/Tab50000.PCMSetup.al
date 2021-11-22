@@ -33,6 +33,18 @@ table 50000 "Project Cycle Management Setup"
             DataClassification = CustomerContent;
             TableRelation = "No. Series";
         }
+        field(6; "Financing Plan Codes"; Code[20])
+        {
+            CaptionML = ENU = 'Financing Plan Codes', DEU = 'Finanzierungsplan Codes';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
+        field(7; "Payment Plan Codes"; Code[20])
+        {
+            CaptionML = ENU = 'Payment Plan Codes', DEU = 'Zahlungsplan Codes';
+            DataClassification = CustomerContent;
+            TableRelation = "No. Series";
+        }
     }
     keys
     {

@@ -12,20 +12,6 @@ page 50021 "Payment Plan"
             group(General)
             {
                 CaptionML = DEU = 'Allgemein', ENU = 'General';
-                field("Code"; Rec."Code")
-                {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Code eines Vertrags.';
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                    CaptionML = ENU = 'Code', DEU = 'Code';
-                }
-                field(Project; Rec.Project)
-                {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschribt den Titel eines Vertrags.';
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                    CaptionML = ENU = 'Title', DEU = 'Titel';
-                }
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Dieser Wert wird benötigt. Er beschribt die Beschreibung eines Vertrags.';

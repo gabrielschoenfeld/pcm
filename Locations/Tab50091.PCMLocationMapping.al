@@ -10,7 +10,7 @@ table 50092 PCMLocationMapping
         field(1; "Project Code"; Code[20])
         {
             CaptionML = DEU = 'Projektcode', ENU = 'Project Code';
-        //    TableRelation = ""
+            TableRelation = "Project";
         }
         field(2; "Location Code"; Code[20])
         {
