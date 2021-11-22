@@ -105,6 +105,7 @@ page 50011 Project
                     CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
                     SubPageLink = "Project" = FIELD("Code");
                     ApplicationArea = All;
+                    UpdatePropagation = Both;
                 }
             }
         }
@@ -126,4 +127,12 @@ page 50011 Project
             }
         }
     }
+    trigger OnOpenPage()
+    var
+        NewDocumentationLine: Record Documentation;
+    begin
+        DocumentationLine.InitNewRecord(NewDocumentationLine, Rec.Code);
+    end;
+
+    var DocumentationLine: Record Documentation;
 }

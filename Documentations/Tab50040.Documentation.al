@@ -7,7 +7,7 @@ table 50040 Documentation
 
     fields
     {
-        field(1; "ID"; BigInteger)
+        field(1; "ID"; Integer)
         {
             CaptionML = ENU = 'ID', DEU = 'ID';
             DataClassification = ToBeClassified;
@@ -19,7 +19,7 @@ table 50040 Documentation
             begin
                 if (ID <> xRec.ID) then begin
                     if LastRec.FindLast() then
-                        ID := LastRec.ID + 1
+                        ID := LastRec.ID + 10
                     else
                         ID := 0;
                 end;
@@ -30,15 +30,7 @@ table 50040 Documentation
             CaptionML = DEU = 'Projekt', ENU = 'Project';
             DataClassification = CustomerContent;
             NotBlank = true;
-            TableRelation = "Project";
-
-            trigger OnValidate()
-            begin
-                if ("Project" <> xRec."Project") or ("Project" = '') then begin
-                    Error('Die Dokumentation konnte keinem Projekt zugeordnet werden.');
-                end;
-            end;
-            
+            TableRelation = "Project"."Code";
         }
         field(3; Description; Text[2048])
         {
@@ -86,10 +78,38 @@ table 50040 Documentation
     }
     keys
     {
-        key(PK; "ID")
+        key(PK; "Project", "ID")
         {
             Clustered = true;
         }
         key (SORT; "Date") {}
     }
+    var
+        ProjectHeader: Record Project;
+        DocumentationLine2: Record Documentation;
+
+    trigger OnDelete()
+    begin
+        if ("ID" = 0) or ("Blocked" = true) then begin
+            Error('Dieser Datensatz kann nicht gelöscht werden.');
+        end;
+    end;
+
+    procedure InitNewRecord(var NewDocumentationLine: Record "Documentation"; ProjectCode: Code[20])
+    var
+        DocumentationLine: Record "Documentation";
+    begin
+        NewDocumentationLine.Copy(Rec);
+        DocumentationLine.SetRange("Project", NewDocumentationLine."Project");
+        if DocumentationLine.FindLast then
+            NewDocumentationLine."ID" := DocumentationLine."ID" + 10
+        else
+            NewDocumentationLine."ID" := 0;
+            NewDocumentationLine."Project" := ProjectCode;
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnDeleteOnAfterSetDocumentationLineFilters(var DocumentationLine: Record "Documentation")
+    begin
+    end;
 }
