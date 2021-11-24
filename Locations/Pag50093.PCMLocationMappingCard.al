@@ -1,25 +1,30 @@
-page 50092 "PCMLocation Mapping List"
+page 50093 "PCMLocation Mapping Card"
 {
     AdditionalSearchTerms = 'project pcm location program projekt programm';
-    ApplicationArea = All;
     CaptionML = DEU='Ort Mapping', ENU='Location Mapping';
-    CardPageID = "PCMLocation Mapping Card";
-    PageType = ListPart;
+    PageType = Card;
     SourceTable = "PCMLocationMapping";
-    UsageCategory = Lists;
 
     layout
     {
         area(content)
         {
-            repeater(General)
+            group(General)
             {
+                CaptionML = DEU = 'Verknüpfung', ENU = 'Verknüpfung';
                 field(Project; Rec."Project Code")
                 {
                     ApplicationArea = All;
                     CaptionML = ENU = 'Project', DEU = 'Projekt';
-                    Editable = false;
+                    Editable = true;
                     Visible = false;
+                }
+                field(Location; Rec."Location Code")
+                {
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Location', DEU = 'Ort';
+                    Editable = true;
+                    Visible = true;
                 }
                 field(Title; Rec.Title)
                 {

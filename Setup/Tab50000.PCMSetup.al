@@ -2,7 +2,7 @@ table 50000 "Project Cycle Management Setup"
 {
     CaptionML = ENU = 'Project Cycle Management Setup';
     DataClassification = CustomerContent;
-    
+
     fields
     {
         field(1; "Primary Key"; Code[10])
@@ -53,5 +53,4 @@ table 50000 "Project Cycle Management Setup"
             Clustered = true;
         }
     }
-    
 }

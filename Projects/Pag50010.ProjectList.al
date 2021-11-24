@@ -64,4 +64,66 @@ page 50010 "Project List"
             }
         }
     }
+    actions
+    {
+        area(navigation)
+        {
+            group(Dimensions)
+            {
+                Caption = 'Dimensions';
+                Image = Dimensions;
+                action("Dimensions-Single")
+                {
+                    ApplicationArea = Dimensions;
+                    Caption = 'Dimensions-Single';
+                    Image = Dimensions;
+                    RunObject = Page "Default Dimensions";
+                    RunPageLink = "Table ID" = CONST(50010),
+                                      "No." = FIELD("Code");
+                    ShortCutKey = 'Alt+D';
+                    ToolTip = 'View or edit the single set of dimensions that are set up for the selected record.';
+                }
+                action("Dimensions-&Multiple")
+                {
+                    AccessByPermission = TableData Dimension = R;
+                    ApplicationArea = Dimensions;
+                    Caption = 'Dimensions-&Multiple';
+                    Image = DimensionSets;
+                    ToolTip = 'View or edit dimensions for a group of records. You can assign dimension codes to transactions to distribute costs and analyze historical information.';
+
+                    trigger OnAction()
+                    var
+                        Project: Record Project;
+                        DefaultDimMultiple: Page "Default Dimensions-Multiple";
+                    begin
+                        CurrPage.SetSelectionFilter(Project);
+                        DefaultDimMultiple.SetMultiRecord(Project, Rec.FieldNo("Code"));
+                        DefaultDimMultiple.RunModal;
+                    end;
+                }
+            }
+        }
+    }
+    trigger OnOpenPage() 
+    var
+        PCMSetup: Record "Project Cycle Management Setup";
+        Project: Record Project;
+    begin
+        if not PCMSetup.Get() then begin
+            PCMSetup."Portfolio Codes" := 'PORTFOLIO';
+            PCMSetup."Program Codes" := 'PORTFOLIO';
+            PCMSetup."Project Codes" := 'PORTFOLIO';
+            PCMSetup."Location Codes" := 'ORT';
+            PCMSetup."Financing Plan Codes" := 'FP';
+            PCMSetup."Payment Plan Codes" := 'ZP';
+            PCMSetup.Insert();
+
+            Project.Code := 'PRO-0000023';
+            Project.Title := 'Humanitarian Aid Project';
+            Project.Description := 'This project is concerned with humanitarian';
+            Project."Start date" := DMY2DATE(1,11,2021);
+            Project."End date" := DMY2DATE(30,11,2021);
+            Project.Insert();
+        end;
+    end;
 }

@@ -121,13 +121,35 @@ page 50011 Project
                     UpdatePropagation = Both;
                 }
             }
+            group(Stakeholder)
+            {
+                CaptionML = ENU = 'Stakeholder', DEU = 'Stakeholder';
+                part("Contact ListPart"; "Contact ListPart")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Project Code" = FIELD("Code");
+                    ApplicationArea = All;
+                    UpdatePropagation = Both;
+                }
+            }
+            group(Team)
+            {
+                CaptionML = ENU = 'Team', DEU = 'Team';
+                part("Resource ListPart"; "Resource ListPart")
+                {
+                    CaptionML = ENU = 'Edit', DEU = 'Bearbeiten';
+                    SubPageLink = "Project Code" = FIELD("Code");
+                    ApplicationArea = All;
+                    UpdatePropagation = Both;
+                }
+            }
         }
         area(FactBoxes) {
             part("Attached Documents"; "Document Attachment Factbox")
             {
                 ApplicationArea = All;
                 CaptionML = ENU = 'Attachments', DEU = 'Begleitdokument';
-                SubPageLink = "Table ID" = CONST(50059),
+                SubPageLink = "Table ID" = CONST(50010),
                               "No." = FIELD("Code");
             }
             systempart(Control1900383207; Links)
@@ -137,6 +159,57 @@ page 50011 Project
             systempart(Control1905767507; Notes)
             {
                 ApplicationArea = Notes;
+            }
+        }
+    }
+    actions
+    {
+        area(navigation)
+        {
+            group(AttachmentsGroup)
+            {
+                CaptionML = DEU = 'Anhänge', ENU = 'Attachements';
+                Image = Attachments;
+                action(Attachments)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Attachments';
+                    Image = Attach;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    PromotedOnly = true;
+                    ToolTip = 'Add a file as an attachment. You can attach images as well as documents.';
+
+                    trigger OnAction()
+                    var
+                        DocumentAttachmentDetails: Page "Document Attachment Details";
+                        RecRef: RecordRef;
+                    begin
+                        RecRef.GetTable(Rec);
+                        DocumentAttachmentDetails.OpenForRecRef(RecRef);
+                        DocumentAttachmentDetails.RunModal;
+                    end;
+                }
+            }
+            group("&Project")
+            {
+                CaptionML = ENU = '&Project';
+                Image = Job;
+                action(Dimensions)
+                {
+                    ApplicationArea = Dimensions;
+                    Caption = 'Dimensions';
+                    Image = Dimensions;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    PromotedIsBig = true;
+                    RunObject = Page "Default Dimensions";
+                    RunPageLink = "Table ID" = CONST(5200),
+                                  "No." = FIELD("Code");
+                    ShortCutKey = 'Alt+D';
+                    ToolTip = 'View or edit dimensions, such as area, project, or department, that you can assign to sales and purchase documents to distribute costs and analyze transaction history.';
+                }
             }
         }
     }

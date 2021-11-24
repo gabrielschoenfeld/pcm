@@ -41,8 +41,8 @@ table 50040 Documentation
         {
             CaptionML = ENU = 'Status', DEU = 'Status';
             DataClassification = CustomerContent;
-            OptionMembers = "Planned","Applied","Approved","Disapproved";
-            OptionCaptionML = ENU = 'Planned,Applied,Approved,Disapproved', DEU = 'Geplant,Beantragt,Genehmigt,Abgelehnt';
+            OptionMembers = "","Planned","Applied","Released","Rejected";
+            OptionCaptionML = ENU = ',Planned,Applied,Released,Rejected', DEU = ',Geplant,Beantragt,Genehmigt,Abgelehnt';
         }
         field(5; "Applicant"; Code[50])
         {
