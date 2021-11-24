@@ -162,14 +162,16 @@ table 50010 Project
         if IsHandled then
             exit(Result);
 
-        if PCMSetup.Get() then
+        if PCMSetup.Get() then begin
             PCMSetup.TestField("Project Codes");
             if NoSeriesMgt.SelectSeries(PCMSetup."Project Codes", xRec."No. Series", "No. Series") then begin
                 NoSeriesMgt.SetSeries("Code");
                 exit(true);
-            end
-        else
+            end;
+        end else begin
             Message('Please complete the Project Cycle Management Setup first!');
+            Page.Run(50000);
+        end;
     end;
 
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])

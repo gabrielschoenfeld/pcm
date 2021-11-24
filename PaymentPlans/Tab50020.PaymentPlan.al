@@ -104,6 +104,7 @@ table 50020 "Payment Plan"
                 NoSeriesMgt.InitSeries(PCMSetup."Payment Plan Codes", xRec."No. Series", 0D, "Code", "No. Series");
             end else begin
                 Message('Please complete the Project Cycle Management Setup first!');
+                 Page.Run(50000);
             end; 
         end;
     end;
@@ -121,12 +122,16 @@ table 50020 "Payment Plan"
         PaymentPlanLine.SetRange("Project", NewPaymentPlanLine."Project");
         if PCMSetup.Get() then begin
             PCMSetup.TestField("Project Codes");
-            if NoSeriesMgt.SelectSeries(PCMSetup."Payment Plan Codes", xRec."No. Series", "No. Series") then begin
-                NoSeriesMgt.SetSeries("Code");
+            if "No. Series" = '' then begin
+                if xRec."No. Series" <> '' then
+                    "No. Series" := xRec."No. Series"
+                else 
+                    "No. Series" := NoSeriesMgt.GetNextNo(PCMSetup."Financing Plan Codes", 0D, true);
             end;
             NewPaymentPlanLine."Project" := ProjectCode;
         end else begin
             Message('Please complete the Project Cycle Management Setup first!');
+            Page.Run(50000);
         end;
     end;
 

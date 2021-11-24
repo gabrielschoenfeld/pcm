@@ -5,28 +5,23 @@ table 50030 "Financing Plan"
     
     fields
     {
-        field(1; "ID"; Integer)
-        {
-            CaptionML = ENU = 'ID', DEU = 'ID';
-            DataClassification = CustomerContent;
-        }
-        field(2; "Code"; Code[20])
+        field(1; "Code"; Code[20])
         {
             CaptionML = ENU = 'Code', DEU = 'Code';
             DataClassification = CustomerContent;
         }
-        field(3; Project; Code[20])
+        field(2; Project; Code[20])
         {
             CaptionML = ENU = 'Project', DEU = 'Projekt';
             DataClassification = CustomerContent;
             TableRelation = Project;
         }
-        field(4; Description; Text[2048])
+        field(3; Description; Text[2048])
         {
             CaptionML = ENU = 'Description', DEU = 'Beschreibung';
             DataClassification = CustomerContent;
         }
-        field(5; Customer; Code[20])
+        field(4; Customer; Code[20])
         {
             CaptionML = ENU = 'Customer', DEU = 'Debitor';
             DataClassification = CustomerContent;
@@ -48,38 +43,44 @@ table 50030 "Financing Plan"
                 end;
             end;
         }
-        field(6; Vendor; Code[20])
+        field(5; Vendor; Code[20])
         {
             CaptionML = ENU = 'Vendor', DEU = 'Kreditor';
             DataClassification = CustomerContent;
             TableRelation = Vendor;
         }
-        field(7; Status; Option)
+        field(6; Status; Option)
         {
             CaptionML = ENU = 'Status', DEU = 'Status';
             DataClassification = CustomerContent;
             OptionMembers = "Planning","Approved","Active","Received","Inactive","Rejected";
             OptionCaptionML = ENU = 'Planning,Approved,Active,Received,Inactive,Rejected', DEU = 'Planung,Genehmigt,Aktiv,Erhalten,Inaktiv,Abgelehnt';
         }
-        field(8; "Start Date"; Date)
+        field(7; "Start Date"; Date)
         {
             CaptionML = ENU = 'Start date', DEU = 'Startdatum';
             DataClassification = CustomerContent;
         }
-        field(9; "End Date"; Date)
+        field(8; "End Date"; Date)
         {
             CaptionML = ENU = 'End date', DEU = 'Enddatum';
             DataClassification = CustomerContent;
         }
-        field(10; "Amount"; Decimal)
+        field(9; "Amount"; Decimal)
         {
             CaptionML = ENU = 'Amount', DEU = 'Betrag';
             DataClassification = CustomerContent;
         }
-        field(11; "Blocked"; Boolean)
+        field(10; "Blocked"; Boolean)
         {
             CaptionML = ENU = 'Blocked', DEU = 'Gesperrt';
             DataClassification = CustomerContent;
+        }
+        field(11; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            Editable = false;
+            TableRelation = "No. Series";
         }
     }
     keys
@@ -92,22 +93,47 @@ table 50030 "Financing Plan"
     }
     trigger OnDelete()
     begin
-        if ("ID" = 0) or ("Blocked" = true) then begin
+        if ("Code" = '') or ("Blocked" = true) then begin
             Error('Dieser Datensatz kann nicht gelöscht werden.');
         end;
     end;
 
+    trigger OnInsert()
+    begin
+        if "Code" = '' then begin
+            if PCMSetup.Get() then begin
+                PCMSetup.Get();
+                PCMSetup.TestField("Financing Plan Codes");
+                NoSeriesMgt.InitSeries(PCMSetup."Financing Plan Codes", xRec."No. Series", 0D, "Code", "No. Series");
+            end else begin
+                Message('Please complete the Project Cycle Management Setup first!');
+            end; 
+        end;
+    end;
+
+    var
+        PCMSetup: Record "Project Cycle Management Setup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+
     procedure InitNewRecord(var NewFinancingPlanLine: Record "Financing Plan"; ProjectCode: Code[20])
     var
         FinancingPlanLine: Record "Financing Plan";
+        NoSeries: Record "No. Series";
     begin
         NewFinancingPlanLine.Copy(Rec);
         FinancingPlanLine.SetRange("Project", NewFinancingPlanLine."Project");
-        if FinancingPlanLine.FindLast then
-            NewFinancingPlanLine."ID" := FinancingPlanLine."ID" + 10
-        else
-            NewFinancingPlanLine."ID" := 0;
+        if PCMSetup.Get() then begin
+            PCMSetup.TestField("Project Codes");
+            if "No. Series" = '' then begin
+                if xRec."No. Series" <> '' then
+                    "No. Series" := xRec."No. Series"
+                else 
+                    "No. Series" := NoSeriesMgt.GetNextNo(PCMSetup."Financing Plan Codes", 0D, true);
+            end;
             NewFinancingPlanLine."Project" := ProjectCode;
+        end else begin
+            Message('Please complete the Project Cycle Management Setup first!');
+        end;
     end;
 
     [IntegrationEvent(false, false)]

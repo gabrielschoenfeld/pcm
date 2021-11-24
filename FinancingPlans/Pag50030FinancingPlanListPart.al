@@ -4,7 +4,7 @@ page 50030 "Financing Plan ListPart"
     SourceTable = "Financing Plan";
     AdditionalSearchTerms = 'project pcm portfolio program projekt programm';
     ApplicationArea = All;
-    CaptionML = DEU='Zahlungsplanzeilen', ENU='Financing Plan Lines';
+    CaptionML = DEU='Finanzierungsplanzeilen', ENU='Financing Plan Lines';
     CardPageID = "Financing Plan";
     UsageCategory = Lists;
 
@@ -14,31 +14,11 @@ page 50030 "Financing Plan ListPart"
         {
             repeater("Financing Plan")
             {
-                field("Code"; Rec."Code")
+                field(Customer; Rec.Customer)
                 {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschreibt den Code einer Zahlungsplanzeile.';
+                    ToolTip = 'Dieser Wert beschreibt den Geldgeber.';
                     ApplicationArea = All;
-                    ShowMandatory = true;
-                    CaptionML = ENU = 'Code', DEU = 'Code';
-                }
-                field(Project; Rec.Project)
-                {
-                    ToolTip = 'Dieser Wert wird benötigt. Er beschreibt das zur Zahlungsplanzeile gehörige Projekt.';
-                    ApplicationArea = All;
-                    ShowMandatory = true;
-                    CaptionML = ENU = 'Project', DEU = 'Projekt';
-                }
-                field("Start Date"; Rec."Start Date")
-                {
-                    ToolTip = 'Dieser Wert beschreibt den Beginn des Verausgabungszeitraums.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'Date', DEU = 'Datum';
-                }
-                field("End Date"; Rec."End Date")
-                {
-                    ToolTip = 'Dieser Wert beschreibt das Ende des Verausgabungszeitraums.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'Date', DEU = 'Datum';
+                    CaptionML = ENU = 'Donor', DEU = 'Geldgeber';
                 }
                 field("Amount"; Rec."Amount")
                 {
@@ -48,28 +28,28 @@ page 50030 "Financing Plan ListPart"
                 }
                 field(Description; Rec.Description)
                 {
-                    ToolTip = 'Dieser Wert entspricht der Beschreibung einer Zahlungsplanzeile.';
+                    ToolTip = 'Dieser Wert entspricht der Beschreibung einer Finanzierungsplanzeile.';
                     ApplicationArea = All;
                     CaptionML = ENU = 'Description', DEU = 'Beschreibung';
                 }
+                field("Start Date"; Rec."Start Date")
+                {
+                    ToolTip = 'Dieser Wert beschreibt den Beginn des Verausgabungszeitraums.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Exp. Period Start Date', DEU = 'Verausg. Stardatum';
+                }
+                field("End Date"; Rec."End Date")
+                {
+                    ToolTip = 'Dieser Wert beschreibt das Ende des Verausgabungszeitraums.';
+                    ApplicationArea = All;
+                    CaptionML = ENU = 'Exp. Period End Date', DEU = 'Verausg. Enddatum';
+                }
                 field(Status; Rec.Status)
                 {
-                    ToolTip = 'Dieser Wert beschreibt den Status einer Zahlungsplanzeile.';
+                    ToolTip = 'Dieser Wert beschreibt den Status einer Finanzierungsplanzeile.';
                     ApplicationArea = All;
                     ShowMandatory = true;
                     CaptionML = ENU = 'Status', DEU = 'Status';
-                }
-                field(Customer; Rec.Customer)
-                {
-                    ToolTip = 'Dieser Wert beschreibt den Geldgeber.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'Donor', DEU = 'Geldgeber';
-                }
-                field(Vendor; Rec.Vendor)
-                {
-                    ToolTip = 'Dieser Wert beschreibt den Implementierungspartner.';
-                    ApplicationArea = All;
-                    CaptionML = ENU = 'Implementation partner', DEU = 'Implementierungspartner';
                 }
             }
         }
