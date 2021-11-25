@@ -53,7 +53,6 @@ codeunit 50000 "PortfolioAssignmenttoProject"
       FieldOnTableTxt: Label '%1 on %2';
    begin
       Project.Get(ProjectCode);
-      Assert.AreEqual(PortfolioCode, Project."Portfolio", StrSubstNo(FieldOnTableTxt, 
-      Project.FieldCaption("Portfolio"), Project.TableCaption()));
+      Assert.AreEqual(PortfolioCode, Project."Portfolio", StrSubstNo(FieldOnTableTxt, Project.FieldCaption("Portfolio"), Project.TableCaption()));
    end;
 }
