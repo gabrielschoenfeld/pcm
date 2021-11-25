@@ -44,6 +44,11 @@ page 50011 Project
                     ShowMandatory = true;
                     CaptionML = ENU = 'Status', DEU = 'Status';
                 }
+                field(ResourceGroup; Rec.ResourceGroup)
+                {
+                    ToolTip = 'Dieser Wert beschribt die zuständige Abteilung eines Projekts.';
+                    ApplicationArea = All;
+                }
             }
             group(Validity)
             {

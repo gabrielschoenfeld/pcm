@@ -109,6 +109,12 @@ table 50010 Project
             DataClassification = CustomerContent;
             TableRelation = "Program";
         }
+        field(12; "ResourceGroup"; Code[20])
+        {
+            CaptionML = DEU = 'Abteilung', ENU = 'Department';
+            DataClassification = CustomerContent;
+            TableRelation = "Resource Group";
+        }
     }
     keys
     {
